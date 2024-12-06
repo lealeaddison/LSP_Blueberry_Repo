@@ -2,17 +2,12 @@ package org.howard.edu.lsp.finalexam.question3;
 
 public class ShapeRenderer {
     public void renderShape(String shapeType) {
-        if (shapeType.equalsIgnoreCase("circle")) {
-            Circle circle = new Circle();
-            circle.draw();
-        } else if (shapeType.equalsIgnoreCase("rectangle")) {
-            Rectangle rectangle = new Rectangle();
-            rectangle.draw();
-        } else if (shapeType.equalsIgnoreCase("triangle")) {
-            Triangle triangle = new Triangle();
-            triangle.draw();
+        ShapeFactory factory = ShapeFactory.getInstance();
+        Shape shape = factory.createShape(shapeType);
+        if (shape != null) {
+        	shape.draw();
         } else {
-            System.out.println("Unknown shape type: " + shapeType);
+        	System.out.println("Unknown shape type: " + shapeType);
         }
     }
 
@@ -27,7 +22,8 @@ public class ShapeRenderer {
     }
 }
 
-// Supporting Shape Classes
+
+/* Supporting Shape Classes
 class Circle {
     public void draw() {
         System.out.println("Drawing a Circle");
@@ -45,3 +41,4 @@ class Triangle {
         System.out.println("Drawing a Triangle");
     }
 }
+*/
